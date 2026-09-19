@@ -1,7 +1,3 @@
-// =========================
-// PAGE LOAD ANIMATION
-// =========================
-
 document.addEventListener("DOMContentLoaded", () => {
 
     document.body.style.opacity = "0";
@@ -11,62 +7,32 @@ document.addEventListener("DOMContentLoaded", () => {
         document.body.style.opacity = "1";
     }, 100);
 
-});
 
+    const cards = document.querySelectorAll(".card");
 
-// =========================
-// CARD CLICK EFFECT
-// =========================
+    cards.forEach(card => {
 
-document.querySelectorAll(".card").forEach(card => {
+        card.addEventListener("mousedown", () => {
+            card.style.transform = "scale(0.97)";
+        });
 
-    card.addEventListener("click", () => {
-
-        card.style.transform = "scale(0.97)";
-
-        setTimeout(() => {
+        card.addEventListener("mouseup", () => {
             card.style.transform = "";
-        }, 120);
+        });
+
+        card.addEventListener("mouseleave", () => {
+            card.style.transform = "";
+        });
 
     });
 
-});
 
+    const glow = document.querySelector(".background-glow");
 
-// =========================
-// MOUSE PURPLE GLOW
-// =========================
+    document.addEventListener("mousemove", event => {
 
-const glow = document.querySelector(".background-glow");
-
-document.addEventListener("mousemove", (event) => {
-
-    const x = event.clientX;
-    const y = event.clientY;
-
-    glow.style.left = `${x}px`;
-    glow.style.top = `${y - 350}px`;
-
-});
-
-
-// =========================
-// MOBILE TOUCH EFFECT
-// =========================
-
-document.querySelectorAll(".card").forEach(card => {
-
-    card.addEventListener("touchstart", () => {
-
-        card.style.transform = "scale(0.97)";
-
-    });
-
-    card.addEventListener("touchend", () => {
-
-        setTimeout(() => {
-            card.style.transform = "";
-        }, 120);
+        glow.style.left = `${event.clientX}px`;
+        glow.style.top = `${event.clientY - 350}px`;
 
     });
 
